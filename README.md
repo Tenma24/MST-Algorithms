@@ -81,8 +81,8 @@ java Runner --in input.json --outJson output.json --outCsv summary.csv
 ````
 ##  Performance Graphs
 
-### Time vs n (Execution Time vs Number of Vertices)
-![Time vs n](plots/time_vs_n.png)
+### Time vs v 
+![Time vs v](plots/graph_time_vs_v.png)
 
 
 CSV Output Example
