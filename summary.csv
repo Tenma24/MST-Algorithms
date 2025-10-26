@@ -1,0 +1,5 @@
+dataset,V,E,algo,totalCost,time_ms,op_main,op_extra
+id=1,5,7,Prim,16,2,071,43,28
+id=1,5,7,Kruskal,16,0,941,11,43
+id=2,4,5,Prim,6,0,025,26,20
+id=2,4,5,Kruskal,6,0,013,8,18

@@ -1,0 +1,36 @@
+{"results":[
+  {
+    "dataset":"id=1",
+    "vertices":5, "edges":7,
+    "prim":{
+      "total_cost":16,
+      "time_ms":2.071,
+      "operations": {"comparisons":43,"aux":28},
+      "mst_edges":[{"u":"A","v":"C","w":3},{"u":"C","v":"B","w":2},{"u":"B","v":"D","w":5},{"u":"D","v":"E","w":6}]
+    },
+    "kruskal":{
+      "total_cost":16,
+      "time_ms":0.941,
+      "operations": {"comparisons":11,"aux":43},
+      "mst_edges":[{"u":"B","v":"C","w":2},{"u":"A","v":"C","w":3},{"u":"B","v":"D","w":5},{"u":"D","v":"E","w":6}]
+    },
+    "check":{"sameCost":true,"mstSizeOkPrim":true,"mstSizeOkKruskal":true,"acyclicPrim":true,"acyclicKruskal":true,"connectedPrim":true,"connectedKruskal":true}
+  },
+  {
+    "dataset":"id=2",
+    "vertices":4, "edges":5,
+    "prim":{
+      "total_cost":6,
+      "time_ms":0.025,
+      "operations": {"comparisons":26,"aux":20},
+      "mst_edges":[{"u":"A","v":"B","w":1},{"u":"B","v":"C","w":2},{"u":"C","v":"D","w":3}]
+    },
+    "kruskal":{
+      "total_cost":6,
+      "time_ms":0.013,
+      "operations": {"comparisons":8,"aux":18},
+      "mst_edges":[{"u":"A","v":"B","w":1},{"u":"B","v":"C","w":2},{"u":"C","v":"D","w":3}]
+    },
+    "check":{"sameCost":true,"mstSizeOkPrim":true,"mstSizeOkKruskal":true,"acyclicPrim":true,"acyclicKruskal":true,"connectedPrim":true,"connectedKruskal":true}
+  }
+]}
