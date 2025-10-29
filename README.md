@@ -1,97 +1,42 @@
-# Assignment 3 — Minimum Spanning Tree
+Assignment 3: Optimization of a City Transportation Network (Minimum Spanning Tree)
+Nurlan Ramazan
+**Group:** SE-2431
+**Algorithms Implemented:** Prim’s and Kruskal’s
+1. Project Overview
+The main goal of this project was to optimize a city transportation network using the concept of a Minimum Spanning Tree (MST). The network is represented as an undirected weighted graph where vertices represent city districts, edges represent possible roads, and weights represent the construction cost of each road.
 
-## Overview
-This project implements two classical algorithms for finding the **Minimum Spanning Tree (MST)** of a graph:
-1. **Prim’s Algorithm**
-2. **Kruskal’s Algorithm**
+Two algorithms — Prim’s and Kruskal’s — were implemented and compared to find the MST. The input data was read from a JSON file (`input.json`) and results were written into another JSON file (`output.json`), while performance metrics were stored in `summary.csv`. These files helped analyze algorithm efficiency and correctness.
+[📸 Insert Screenshot 1: Example of JSON input data (`input.json`)]
+2. Implementation Details
+Both algorithms were implemented in Java. Each algorithm determines the subset of edges that connects all vertices with the minimum possible total weight, ensuring no cycles are formed.
 
-Both algorithms have been implemented and compared in terms of execution time, the number of operations, and their performance on different graph sizes.
+• **Prim’s Algorithm:** Starts from one vertex and grows the MST one edge at a time by selecting the smallest connecting edge. It uses a priority queue to efficiently select the next minimum-weight edge.
 
----
+• **Kruskal’s Algorithm:** Begins by sorting all edges in ascending order of weight. Then, it iteratively adds edges to the MST as long as they do not form a cycle. A Disjoint Set Union (DSU) structure is used to efficiently detect and prevent cycles.
+3. Input and Output Description
+• **Input File (`input.json`):** Contains multiple graphs with vertices, edges, and weights.
+• **Output File (`output.json`):** Contains the resulting MST edges and total cost for both Prim’s and Kruskal’s algorithms.
+• **Summary File (`summary.csv`):** Contains execution time and total cost for each dataset and algorithm.
 
-## Implemented Algorithms
+All files were automatically generated during runtime and stored in the root directory of the project.
+4. Experimental Results and Comparison
+After running the algorithms on several datasets of different sizes, both produced identical MST costs, confirming correctness. However, Kruskal’s algorithm achieved lower execution times across all tested graphs.
 
-### **Prim’s Algorithm**
-- **Complexity:** O(E log V)
-- **Data structure:** Priority Queue (min heap)
-- **Works best for:** Dense graphs
-- **Optimizations:**
-    - Sentinel value: Global minimum moved to index 0 to simplify comparisons.
-    - Fast path: Skip iteration if the current value is already greater than the previous value (for nearly-sorted data).
-    - Binary search: Use binary search to find the correct insertion position.
+• **Prim’s Algorithm:** Performs efficiently on dense graphs but requires frequent priority queue operations, which add computational overhead.
+• **Kruskal’s Algorithm:** Performs efficiently on both sparse and dense graphs due to the optimized DSU structure and fast sorting.
 
-### **Kruskal’s Algorithm**
-- **Complexity:** O(E log E)
-- **Data structure:** Disjoint Set Union (DSU)
-- **Works best for:** Sparse graphs
-- **Optimizations:**
-    - Sort edges first.
-    - Use the Union-Find data structure to efficiently manage connected components.
+The results confirmed that Kruskal’s algorithm is generally more efficient for practical use in Java implementations.
+[📸 Insert Screenshot 4: Console output or summary.csv showing algorithm comparison]
+5. Performance Visualization
+A chart was created in Excel to visualize the relationship between the number of vertices (n) and the execution time of both algorithms. The chart clearly demonstrates that Kruskal consistently outperforms Prim, while both maintain identical MST costs.
+[📸 Insert Screenshot 5: Time vs n graph (plots/time_vs_n.png)]
+6. Conclusion and Recommendations
+Both Prim’s and Kruskal’s algorithms were successfully implemented, tested, and validated. Each produced the correct MST results with equal total costs. However, practical results show that Kruskal’s algorithm is faster due to its efficient handling of edges using DSU and a single global sort.
 
----
+Prim’s algorithm remains a strong alternative for dense graphs, but Kruskal’s simplicity and speed make it more suitable for real-world Java applications where graphs are moderately dense or large.
 
-## Input & Output
+Recommendations:
+• Use Kruskal’s algorithm for general-purpose MST computations in transportation networks.
+• Use Prim’s algorithm for adjacency-list-based dense graphs.
+• Both algorithms ensure correctness and scalability for graph optimization tasks.
 
-### Input:
-- **File:** `input.json`
-- **Format:** The file contains a graph with `nodes` and `edges` properties.
-
-### Output:
-- **File 1:** `output.json` — Contains the results of the MST calculation for both Prim and Kruskal algorithms.
-- **File 2:** `summary.csv` — Performance metrics including execution time, comparisons, and auxiliary operations for both algorithms.
-
----
-
-## Performance Metrics
-
-During execution, the following metrics are collected:
-- **Execution time (ms):** The total time taken by the algorithm.
-- **Comparisons:** The number of comparisons made.
-- **Swaps:** The number of swaps performed.
-- **Accesses:** The total number of array reads and writes.
-- **Allocations:** The number of memory allocations made.
-
----
-
-## How to Run
-
-1. Clone the repository or download the files.
-2. Open the project in your favorite IDE (e.g., IntelliJ IDEA).
-3. **Run** the `Runner.java` class to execute the MST algorithms.
-
-Alternatively, you can run the project from the command line:
-
-````
-java Runner --in input.json --outJson output.json --outCsv summary.csv
-{
-    "graphs": [
-        {
-            "id": "1",
-            "nodes": ["A", "B", "C", "D"],
-            "edges": [
-                {"from": "A", "to": "B", "weight": 10},
-                {"from": "A", "to": "C", "weight": 5},
-                {"from": "B", "to": "C", "weight": 2},
-                {"from": "B", "to": "D", "weight": 1},
-                {"from": "C", "to": "D", "weight": 3}
-            ]
-        }
-    ]
-}
-````
-##  Performance Graphs
-
-### Time vs v 
-![Time vs v](plots/graph_time_vs_v.png)
-
-
-CSV Output Example
-
-Here’s an example of the results stored in summary.csv:
-````
-dataset,V,E,algo,totalCost,time_ms,op_main,op_extra
-id=1,5,7,Prim,16,3,304,43,28
-id=1,5,7,Kruskal,16,0,673,11,43
-id=2,4,5,Prim,6,0,25,26,20
-id=2,4,5,Kruskal,6,0,15,8,18
-````
