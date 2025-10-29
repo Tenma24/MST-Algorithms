@@ -1,12 +1,17 @@
 Assignment 3: Optimization of a City Transportation Network (Minimum Spanning Tree)
+
 Nurlan Ramazan
+
 **Group:** SE-2431
+
 **Algorithms Implemented:** Prim’s and Kruskal’s
+
+
 1. Project Overview
 The main goal of this project was to optimize a city transportation network using the concept of a Minimum Spanning Tree (MST). The network is represented as an undirected weighted graph where vertices represent city districts, edges represent possible roads, and weights represent the construction cost of each road.
 
 Two algorithms — Prim’s and Kruskal’s — were implemented and compared to find the MST. The input data was read from a JSON file (`input.json`) and results were written into another JSON file (`output.json`), while performance metrics were stored in `summary.csv`. These files helped analyze algorithm efficiency and correctness.
-[📸 Insert Screenshot 1: Example of JSON input data (`input.json`)]
+(src/input_example.png)
 2. Implementation Details
 Both algorithms were implemented in Java. Each algorithm determines the subset of edges that connects all vertices with the minimum possible total weight, ensuring no cycles are formed.
 
